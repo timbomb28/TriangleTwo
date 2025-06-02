@@ -7,4 +7,3 @@ public class Main {
         ResizableFrame triangle = new ResizableFrame(new Triangle());
     }
 }
-//test
