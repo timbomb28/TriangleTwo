@@ -1,7 +1,5 @@
 package triangle;
 
-import java.awt.Dimension;
-
 import resizable.ResizableFrame;
 
 public class Main {
