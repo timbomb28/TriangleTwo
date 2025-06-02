@@ -33,8 +33,8 @@ public class Triangle implements ResizableImage {
         BufferedImage bufferedImage = new BufferedImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D gBuffer = (Graphics2D) bufferedImage.getGraphics();
 
-
-        gBuffer.setColor(new Color(0, 0, 0, 150));
+        Random random = new Random();
+        gBuffer.setColor(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 
         // Eckpunkte des großen Dreiecks
         int x1 = size.width / 2;
@@ -44,14 +44,14 @@ public class Triangle implements ResizableImage {
         int x3 = size.width;
         int y3 = size.height;
 
-        drawRecursiveTriangles(gBuffer, x1, y1, x2, y2, x3, y3, 5); // Rekursionstiefe
+        drawRecursiveTriangles(gBuffer, x1, y1, x2, y2, x3, y3, 8); // Rekursionstiefe
 
         gBuffer.dispose();
         return bufferedImage;
     }
 
     private void drawRecursiveTriangles(Graphics2D g, int x1, int y1, int x2, int y2, int x3, int y3, int depth) {
-        // Setze eine zufällige Farbe für das aktuelle Dreieck (ohne Transparenz)
+
         Random random = new Random();
         g.setColor(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 
@@ -60,7 +60,7 @@ public class Triangle implements ResizableImage {
         if (depth == 0) {
             int[] xPoints = {x1, x2, x3};
             int[] yPoints = {y1, y2, y3};
-            g.drawPolygon(xPoints, yPoints, 3);
+            g.fillPolygon(xPoints, yPoints, 3);
             return;
         }
 
@@ -75,7 +75,7 @@ public class Triangle implements ResizableImage {
         // Zeichne das zentrale Dreieck (Verbindet die Mittelpunkte)
         int[] xPoints = {mx1, mx2, mx3};
         int[] yPoints = {my1, my2, my3};
-        g.drawPolygon(xPoints, yPoints, 3);
+        g.fillPolygon(xPoints, yPoints, 3);
 
         // Rekursiv auf den drei äußeren Dreiecken
         drawRecursiveTriangles(g, x1, y1, mx1, my1, mx3, my3, depth - 1);
