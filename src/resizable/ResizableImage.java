@@ -1,5 +1,5 @@
 
-package resizable;
+package src.resizable;
 
 import java.awt.*;
 

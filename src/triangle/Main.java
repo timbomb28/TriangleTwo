@@ -1,10 +1,10 @@
-package triangle;
+package src.triangle;
 
-import resizable.ResizableFrame;
+import src.resizable.ResizableFrame;
 
 public class Main {
     public static void main(String[] args) {
         ResizableFrame triangle = new ResizableFrame(new Triangle());
     }
 }
-//test
+//testS

@@ -1,4 +1,4 @@
-package resizable;
+package src.resizable;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,8 +6,8 @@ import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import static resizable.Debug.print;
-import static resizable.Debug.printStackTrace;
+import static src.resizable.Debug.print;
+import static src.resizable.Debug.printStackTrace;
 
 /**
  * Creates the Frame and the Panel that holds

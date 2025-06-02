@@ -1,13 +1,12 @@
 
-package triangle;
+package src.triangle;
 
-import resizable.ResizableImage;
+import src.resizable.ResizableImage;
 import java.util.Random;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Scanner;
 
-import static resizable.Debug.print;
+import static src.resizable.Debug.print;
 
 /**
  * Implement your Sierpinski Triangle here.

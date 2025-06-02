@@ -1,7 +1,7 @@
 
-package resizable;
+package src.resizable;
 
-import static resizable.Debug.print;
+import static src.resizable.Debug.print;
 
 /**
  * WaitForPause takes an inactivity threshold (in ms)
