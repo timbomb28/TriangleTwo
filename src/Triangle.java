@@ -53,8 +53,8 @@ public class Triangle implements ResizableImage {
 
     private void drawRecursiveTriangles(Graphics2D g, int x1, int y1, int x2, int y2, int x3, int y3, int depth) {
         // Setze eine zufällige Farbe für das aktuelle Dreieck (ohne Transparenz)
-        //Random random = new Random();
-        //g.setColor(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
+        Random random = new Random();
+        g.setColor(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 
 
 
