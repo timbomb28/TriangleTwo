@@ -45,14 +45,14 @@ public class Triangle implements ResizableImage {
         int x3 = size.width;
         int y3 = size.height;
 
-        drawRecursiveTriangles(gBuffer, x1, y1, x2, y2, x3, y3, 5); // Rekursionstiefe
+        drawRecursiveTriangles(gBuffer, x1, y1, x2, y2, x3, y3, 8); // Rekursionstiefe
 
         gBuffer.dispose();
         return bufferedImage;
     }
 
     private void drawRecursiveTriangles(Graphics2D g, int x1, int y1, int x2, int y2, int x3, int y3, int depth) {
-        // Setze eine zufällige Farbe für das aktuelle Dreieck (ohne Transparenz)
+
         Random random = new Random();
         g.setColor(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 
