@@ -33,8 +33,12 @@ public class Triangle implements ResizableImage {
         BufferedImage bufferedImage = new BufferedImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D gBuffer = (Graphics2D) bufferedImage.getGraphics();
 
+        int maxDepth = 4;
+        Color[] colors = new Color[maxDepth + 1];
         Random random = new Random();
-        gBuffer.setColor(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
+        for (int i = 0; i <= maxDepth; i++) {
+            colors[i] = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+        }
 
         // Eckpunkte des großen Dreiecks
         int x1 = size.width / 2;
@@ -44,18 +48,14 @@ public class Triangle implements ResizableImage {
         int x3 = size.width;
         int y3 = size.height;
 
-        drawRecursiveTriangles(gBuffer, x1, y1, x2, y2, x3, y3, 8); // Rekursionstiefe
+        drawRecursiveTriangles(gBuffer, x1, y1, x2, y2, x3, y3, maxDepth, colors); // Rekursionstiefe
 
         gBuffer.dispose();
         return bufferedImage;
     }
 
-    private void drawRecursiveTriangles(Graphics2D g, int x1, int y1, int x2, int y2, int x3, int y3, int depth) {
-
-        Random random = new Random();
-        g.setColor(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
-
-
+    private void drawRecursiveTriangles(Graphics2D g, int x1, int y1, int x2, int y2, int x3, int y3, int depth, Color[] colors) {
+        g.setColor(colors[depth]);
 
         if (depth == 0) {
             int[] xPoints = {x1, x2, x3};
@@ -78,9 +78,9 @@ public class Triangle implements ResizableImage {
         g.fillPolygon(xPoints, yPoints, 3);
 
         // Rekursiv auf den drei äußeren Dreiecken
-        drawRecursiveTriangles(g, x1, y1, mx1, my1, mx3, my3, depth - 1);
-        drawRecursiveTriangles(g, mx1, my1, x2, y2, mx2, my2, depth - 1);
-        drawRecursiveTriangles(g, mx3, my3, mx2, my2, x3, y3, depth - 1);
+        drawRecursiveTriangles(g, x1, y1, mx1, my1, mx3, my3, depth - 1, colors);
+        drawRecursiveTriangles(g, mx1, my1, x2, y2, mx2, my2, depth - 1, colors);
+        drawRecursiveTriangles(g, mx3, my3, mx2, my2, x3, y3, depth - 1, colors);
     }
 
     BufferedImage bufferedImage;
